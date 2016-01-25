@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SortComparer</string>
+
+    <string name="firstScreenMessage">Select up to 4 algorithms to compare</string>
+    <string name="choose_datastructure">Pick a data structure</string>
+    <string name="choose_data_size">Select data size</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_second_screen">SecondScreen</string>
+    <string name="start_button">Start</string>
+    <string name="title_activity_third_screen">ThirdScreen</string>
+</resources>

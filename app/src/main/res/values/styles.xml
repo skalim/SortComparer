@@ -1,0 +1,21 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Material.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:colorPrimary">@color/primary</item>
+        <!--   darker variant for the status bar and contextual app bars -->
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+        <!--   theme UI controls like checkboxes and text fields -->
+        <item name="android:colorAccent">@color/accent</item>
+    </style>
+
+    <color name="card_view_name">#ECEFF1</color>
+    <color name="card_view_description">#ECEFF1</color>
+    <color name="card_view_background">#263238</color>
+    <color name="card_view_background_selected">#37474F</color>
+
+    <color name="primary">#607D8B</color>
+    <color name="primary_dark">#263238</color>
+    <color name="accent">#FF5722</color>
+</resources>

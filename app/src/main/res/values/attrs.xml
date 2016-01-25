@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="messages_style" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:elevation">5dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
+
+    <style name="ic_data">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="name_data">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:elevation">5dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+</resources>
