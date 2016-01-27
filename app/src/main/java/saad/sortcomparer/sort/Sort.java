@@ -1,54 +1,70 @@
 package saad.sortcomparer.sort;
 
-import android.widget.TextView;
+import saad.sortcomparer.Statistics;
+import saad.sortcomparer.thirdscreen.ThirdScreen;
 
 /**
  * Created by Saad on 23-Jan-16.
  */
 public class Sort {
     private SortData data;
-    private TextView[] textViews;
+    private long timeStarted;
 
-    public Sort(int size, boolean structure, TextView[] textViews) {
+    public Sort(int size, boolean structure) {
         data = new SortData(size, structure);
-        this.textViews = textViews;
     }
 
     public SortData getData() {
         return data;
     }
 
-    public void updateTextViews(){
-        for(int i = 0; i < textViews.length; i++){
-            //System.out.println("Updating TextView: " + data.getConsole().getLine(i));
-            textViews[i].setText( data.getConsole().getLine(i) );
-        }
-    }
-
-    public void selectionSort() {
+    public Statistics selectionSort(ThirdScreen.SortingTask task) {
+        Statistics stats = new Statistics();
+        stats.setName("Selection");
+        int numCompares = 0;
+        timeStarted = System.nanoTime();
         for (int i = 0; i < data.size(); i++) {
             int min = Integer.MAX_VALUE;
             int minIndex = 0;
             for (int j = i; j < data.size(); j++) {
+                numCompares++;
                 if (data.get(j) < min) {
                     min = data.get(j);
                     minIndex = j;
+                    task.doProgress();
                 }
             }
             data.swap(i, minIndex);
-            updateTextViews();
+            //task.doProgress();
         }
+
+        stats.setTime(System.nanoTime() - timeStarted);
+        stats.setNumCompares(numCompares);
+
+        return stats;
     }
 
-    public void insertionSort(){
-        for(int i = 1; i < data.size(); i++){
+    public Statistics insertionSort(ThirdScreen.SortingTask task) {
+        Statistics stats = new Statistics();
+        stats.setName("Insertion");
+        int numCompares = 0;
+        timeStarted = System.nanoTime();
+
+        for (int i = 1; i < data.size(); i++) {
             int k = i;
-            for(int j = i-1; j >= 0; j--){
-                if( data.get(j) > data.get(k)){
+            for (int j = i - 1; j >= 0; j--) {
+                numCompares++;
+                if (data.get(j) > data.get(k)) {
                     data.swap(k, j);
                     k = j;
+                    task.doProgress();
                 }
             }
         }
+
+        stats.setTime(System.nanoTime() - timeStarted);
+        stats.setNumCompares(numCompares);
+
+        return stats;
     }
 }

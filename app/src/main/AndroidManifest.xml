@@ -20,8 +20,11 @@
             android:name=".secondscreen.SecondScreen"
             android:label="@string/title_activity_second_screen" />
         <activity
-            android:name=".saad.sortcomparer.thirdscreen.ThirdScreen"
-            android:label="@string/title_activity_third_screen"></activity>
+            android:name=".thirdscreen.ThirdScreen"
+            android:label="@string/title_activity_third_screen" />
+        <activity
+            android:name=".resultsscreen.ResultsActivity"
+            android:label="@string/title_activity_results"></activity>
     </application>
 
 </manifest>

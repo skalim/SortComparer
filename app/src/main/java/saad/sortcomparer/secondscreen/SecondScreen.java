@@ -5,8 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.app.Activity;
 import android.support.v7.widget.CardView;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,8 +13,8 @@ import android.widget.SeekBar;
 
 import saad.sortcomparer.firstscreen.Animator;
 import saad.sortcomparer.R;
-import saad.sortcomparer.SettingsHandler;
-import saad.sortcomparer.saad.sortcomparer.thirdscreen.ThirdScreen;
+import saad.sortcomparer.Settings;
+import saad.sortcomparer.thirdscreen.ThirdScreen;
 
 public class SecondScreen extends Activity {
     SeekBar seekBar;
@@ -33,6 +31,9 @@ public class SecondScreen extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        for(int i = 0; i < Settings.algorithmsSelected.size(); i++){
+            System.out.println(Settings.algorithmsSelected.get(i));
+        }
         animator = new Animator();
         isArrayChecked = false;
         isListChecked = false;
@@ -51,8 +52,9 @@ public class SecondScreen extends Activity {
     }
 
     public void nextScreen(View view){
-        SettingsHandler.Settings.listSelected = isListChecked;
-        SettingsHandler.Settings.size = Integer.parseInt( editText.getText().toString().replace(",", "") );
+        Settings.listSelected = isListChecked;
+        System.out.println("Size: " + editText.getText().toString().replace(",", ""));
+        Settings.size = Integer.parseInt( editText.getText().toString().replace(",", "") );
         Intent intent = new Intent(this, ThirdScreen.class);
         startActivity(intent);
     }
@@ -112,7 +114,8 @@ public class SecondScreen extends Activity {
     public void setSeekBarSettings() {
         seekBar.setProgress(1);
         seekBar.incrementProgressBy(1);
-        seekBar.setMax(2000000000 - minValue);
+        seekBar.setMax(26214400
+                - minValue);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -120,7 +123,6 @@ public class SecondScreen extends Activity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progress = progress + minValue;
                 String s = String.format("%,d", progress);
-                //seekBar.setProgress(progress);
                 editText.setText(s);
             }
 
@@ -135,28 +137,4 @@ public class SecondScreen extends Activity {
             }
         });
     }
-
-    public void setEditTextSettings() {
-        editText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                String a = editText.getText().toString();
-                a = a.replace(",", "");
-                int newValue = Integer.parseInt(a);
-                newValue = newValue + minValue;
-                seekBar.setProgress(newValue);
-            }
-        });
-    }
-
 }

@@ -1,4 +1,4 @@
-package saad.sortcomparer.saad.sortcomparer.thirdscreen;
+package saad.sortcomparer.thirdscreen;
 
 import android.widget.TextView;
 
@@ -28,7 +28,7 @@ public class Console {
             return;
         }
 
-        for(int i = 0; i < 8; i++){
+        for(int i = 0; i <= 8; i++){
             lines[i] = lines[i+1];
         }
         lines[9] = line;

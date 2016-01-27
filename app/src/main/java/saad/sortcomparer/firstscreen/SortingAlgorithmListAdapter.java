@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import saad.sortcomparer.R;
-import saad.sortcomparer.SettingsHandler;
+import saad.sortcomparer.Settings;
 
 /**
  * Created by Saad on 23-Jan-16.
@@ -52,13 +52,15 @@ public class SortingAlgorithmListAdapter extends RecyclerView.Adapter<SortingAlg
                         checkCircle.setVisibility(View.INVISIBLE);
                         cardView.setCardBackgroundColor(Color.parseColor("#263238"));
                         isChecked = false;
-                        SettingsHandler.Settings.removeSelected( algorithmNameTV.getText().toString() );
+                        System.out.println("Removing: " + algorithmNameTV.getText().toString());
+                        Settings.removeSelected( algorithmNameTV.getText().toString() );
                     }else{
                         animator.animateIn(checkCircle);
                         checkCircle.setVisibility(View.VISIBLE);
                         cardView.setCardBackgroundColor(Color.parseColor("#37474F"));
                         isChecked = true;
-                        SettingsHandler.Settings.addSelected( algorithmNameTV.getText().toString() );
+                        System.out.println("Adding: " + algorithmNameTV.getText().toString());
+                        Settings.addSelected( algorithmNameTV.getText().toString() );
                     }
                 }
             });

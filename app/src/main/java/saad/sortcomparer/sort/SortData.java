@@ -3,7 +3,7 @@ package saad.sortcomparer.sort;
 import java.util.ArrayList;
 import java.util.Random;
 
-import saad.sortcomparer.saad.sortcomparer.thirdscreen.Console;
+import saad.sortcomparer.thirdscreen.Console;
 
 /**
  * Created by Saad on 23-Jan-16.
@@ -11,17 +11,12 @@ import saad.sortcomparer.saad.sortcomparer.thirdscreen.Console;
 public class SortData {
     private final boolean LIST = true;
 
-    private int[] array;
-    private ArrayList<Integer> list;
+    private Console console;
+    private short[] array;
+    private ArrayList<Short> list;
     private int size;
     private Random random;
     private boolean isArray;
-
-    public Console getConsole() {
-        return console;
-    }
-
-    private Console console;
 
     /**
      *
@@ -43,21 +38,21 @@ public class SortData {
     }
 
     public void initArray(){
-        array = new int[size];
+        array = new short[size];
         for(int i = 0; i < size; i++){
-            array[i] = getNumber();
+            array[i] = (short)getNumber();
         }
     }
 
     public void initList(){
-        list = new ArrayList<Integer>();
+        list = new ArrayList<>();
         for(int i = 0; i < size; i++){
-            list.add( getNumber() );
+            list.add( (short)getNumber() );
         }
     }
 
     public int getNumber(){
-        return random.nextInt(2000000000)+1;
+        return random.nextInt(32766)+1;
     }
 
     public int get(int position){
@@ -77,14 +72,14 @@ public class SortData {
             return;
         }
 
-        console.nextLine("swap(" + String.valueOf(i) + ", " + String.valueOf(j) + ")");
-
         if( isArray ){
-            int tmp = array[i];
+            console.nextLine("swap(" + String.valueOf(array[i]) + ", " + String.valueOf(array[j]) + ")");
+            short tmp = array[i];
             array[i] = array[j];
             array[j] = tmp;
         }else{
-            int tmp = list.get(i);
+            console.nextLine("swap(" + String.valueOf(list.get(i)) + ", " + String.valueOf(list.get(j)) + ")");
+            short tmp = list.get(i);
             list.set(i, list.get(j));
             list.set(j, tmp);
         }
@@ -121,4 +116,45 @@ public class SortData {
 
         return true;
     }
+
+    public short getMin(){
+        short min = 32767;
+        if( isArray ){
+            for(int i = 0; i < size; i++){
+                if( array[i] < min){
+                    min = array[i];
+                }
+            }
+        }else{
+            for(int i = 0; i < size; i++){
+                if( list.get(i) < min){
+                    min = list.get(i);
+                }
+            }
+        }
+        return min;
+    }
+
+    public short getMax(){
+        short max = 0;
+        if( isArray ){
+            for(int i = 0; i < size; i++){
+                if( array[i] > max){
+                    max = array[i];
+                }
+            }
+        }else{
+            for(int i = 0; i < size; i++){
+                if( list.get(i) > max){
+                    max = list.get(i);
+                }
+            }
+        }
+        return max;
+    }
+
+    public Console getConsole() {
+        return console;
+    }
+
 }

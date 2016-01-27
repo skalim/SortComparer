@@ -17,11 +17,11 @@ public class SortTest /*extends TestCase */{
     public void testSelectionSort() {
         //test array
         //sort = new Sort(1000, false);
-        sort.selectionSort();
+        //sort.selectionSort();
         assertTrue(sort.getData().isSorted());
         //test list
        // sort = new Sort(1000, true);
-        sort.selectionSort();
+        //sort.selectionSort();
         assertTrue(sort.getData().isSorted());
     }
 
@@ -30,12 +30,12 @@ public class SortTest /*extends TestCase */{
         //test array
         // = new Sort(1000, false);
         sort.getData().print();
-        sort.insertionSort();
+        //sort.insertionSort();
         sort.getData().print();
         assertTrue(sort.getData().isSorted());
         //test list
        // sort = new Sort(1000, true);
-        sort.insertionSort();
+        //sort.insertionSort();
         assertTrue(sort.getData().isSorted());
     }
 }
