@@ -31,4 +31,10 @@
         <item name="android:fontFamily">sans-serif-thin</item>
         <item name="android:layout_centerHorizontal">true</item>
     </style>
+
+    <style name="text_console">
+        <item name="android:color">@color/white</item>
+        <item name="android:fontFamily">fonts/Minecraftia-Regular</item>
+        <item name="android:textSize">10dp</item>
+    </style>
 </resources>

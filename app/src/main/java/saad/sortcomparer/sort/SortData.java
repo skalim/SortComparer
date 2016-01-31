@@ -67,9 +67,16 @@ public class SortData {
         return size;
     }
 
-    public void swap(int i, int j){
+    /**
+     *
+     * @param i first index to swap
+     * @param j second index to swap
+     *  @return true if swapped, false otherwise
+     *
+     */
+    public boolean swap(int i, int j){
         if( i == j){
-            return;
+            return false;
         }
 
         if( isArray ){
@@ -83,6 +90,8 @@ public class SortData {
             list.set(i, list.get(j));
             list.set(j, tmp);
         }
+
+        return true;
     }
 
     public void print(){

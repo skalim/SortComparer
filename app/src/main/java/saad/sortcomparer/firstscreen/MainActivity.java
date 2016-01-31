@@ -11,6 +11,7 @@ import android.view.View;
 import java.util.ArrayList;
 
 import saad.sortcomparer.R;
+import saad.sortcomparer.Settings;
 import saad.sortcomparer.secondscreen.SecondScreen;
 
 public class MainActivity extends Activity {
@@ -46,6 +47,9 @@ public class MainActivity extends Activity {
     }
 
     public void nextScreen(View view) {
+        if(Settings.algorithmsSelected.size() < 1 ){
+            return;
+        }
         Intent intent = new Intent(this, SecondScreen.class);
         startActivity(intent);
     }

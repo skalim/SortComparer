@@ -13,6 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/console"
+        android:background="@color/black"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="5dp"
         >
         <TextView
             android:id="@+id/preexecute_message"
@@ -20,6 +25,7 @@
             android:layout_height="wrap_content"
             android:text="@string/preexecute_message"
             android:visibility="gone"
+            style="@style/text_console"
             />
         <TextView
             android:id="@+id/sort_name"
@@ -27,59 +33,78 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/preexecute_message"
             android:visibility="gone"
+            style="@style/text_console"
             />
         <TextView
             android:id="@+id/tv_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/sort_name"
+            style="@style/text_console"
             />
         <TextView
             android:id="@+id/tv_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_0"/>
+            android:layout_below="@id/tv_0"
+            style="@style/text_console"
+            />
         <TextView
             android:id="@+id/tv_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_1"
+            style="@style/text_console"
             />
         <TextView
             android:id="@+id/tv_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_2"/>
+            android:layout_below="@id/tv_2"
+            style="@style/text_console"
+            />
         <TextView
             android:id="@+id/tv_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_3"/>
+            android:layout_below="@id/tv_3"
+            style="@style/text_console"
+            />
         <TextView
             android:id="@+id/tv_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_4"/>
+            android:layout_below="@id/tv_4"
+            style="@style/text_console"
+            />
         <TextView
             android:id="@+id/tv_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_5"/>
+            android:layout_below="@id/tv_5"
+            style="@style/text_console"
+            />
         <TextView
             android:id="@+id/tv_7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_6"/>
+            android:layout_below="@id/tv_6"
+            style="@style/text_console"
+            />
         <TextView
             android:id="@+id/tv_8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_7"/>
+            android:layout_below="@id/tv_7"
+            style="@style/text_console"
+            />
         <TextView
             android:id="@+id/tv_9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_8"/>
+            android:layout_below="@id/tv_8"
+            style="@style/text_console"
+            />
         <TextView
             android:id="@+id/postexecute_message"
             android:layout_width="wrap_content"
@@ -87,6 +112,7 @@
             android:layout_below="@id/tv_9"
             android:text="@string/postexecute_message"
             android:visibility="gone"
+            style="@style/text_console"
             />
 
     </RelativeLayout>

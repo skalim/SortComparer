@@ -1,6 +1,5 @@
 package saad.sortcomparer.sort;
 
-import saad.sortcomparer.Statistics;
 import saad.sortcomparer.thirdscreen.ThirdScreen;
 
 /**
@@ -21,9 +20,11 @@ public class Sort {
     public Statistics selectionSort(ThirdScreen.SortingTask task) {
         Statistics stats = new Statistics();
         stats.setName("Selection");
-        int numCompares = 0;
+        long numCompares = 0;
+        long numSwaps = 0;
         timeStarted = System.nanoTime();
         for (int i = 0; i < data.size(); i++) {
+            task.doProgress();
             int min = Integer.MAX_VALUE;
             int minIndex = 0;
             for (int j = i; j < data.size(); j++) {
@@ -31,15 +32,16 @@ public class Sort {
                 if (data.get(j) < min) {
                     min = data.get(j);
                     minIndex = j;
-                    task.doProgress();
                 }
             }
-            data.swap(i, minIndex);
-            //task.doProgress();
+            if( data.swap(i, minIndex) ){
+                numSwaps++;
+            }
         }
 
         stats.setTime(System.nanoTime() - timeStarted);
         stats.setNumCompares(numCompares);
+        stats.setNumSwaps(numSwaps);
 
         return stats;
     }
@@ -47,24 +49,27 @@ public class Sort {
     public Statistics insertionSort(ThirdScreen.SortingTask task) {
         Statistics stats = new Statistics();
         stats.setName("Insertion");
-        int numCompares = 0;
+        long numCompares = 0;
+        long numSwaps = 0;
         timeStarted = System.nanoTime();
 
         for (int i = 1; i < data.size(); i++) {
+            task.doProgress();
             int k = i;
             for (int j = i - 1; j >= 0; j--) {
                 numCompares++;
                 if (data.get(j) > data.get(k)) {
-                    data.swap(k, j);
+                    if( data.swap(i, j)){
+                        numSwaps++;
+                    }
                     k = j;
-                    task.doProgress();
                 }
             }
         }
 
         stats.setTime(System.nanoTime() - timeStarted);
         stats.setNumCompares(numCompares);
-
+        stats.setNumSwaps(numSwaps);
         return stats;
     }
 }

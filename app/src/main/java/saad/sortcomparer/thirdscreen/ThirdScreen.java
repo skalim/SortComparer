@@ -1,20 +1,18 @@
 package saad.sortcomparer.thirdscreen;
 
 import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
+import android.graphics.Typeface;
+import android.os.*;
 import android.app.Activity;
-import android.text.StaticLayout;
 import android.view.View;
 import android.widget.TextView;
 
-import java.io.Serializable;
-
 import saad.sortcomparer.R;
 import saad.sortcomparer.Settings;
-import saad.sortcomparer.Statistics;
+import saad.sortcomparer.sort.Statistics;
 import saad.sortcomparer.resultsscreen.ResultsActivity;
 import saad.sortcomparer.sort.Sort;
+
 
 public class ThirdScreen extends Activity {
     TextView[] textViews;
@@ -25,10 +23,12 @@ public class ThirdScreen extends Activity {
     TextView sortName;
     Statistics[] statistics;
 
+    Typeface face;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        face = Typeface.createFromAsset(getAssets(), "fonts/Minecraftia-Regular.ttf");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third_screen);
         initTextViews();
@@ -43,10 +43,12 @@ public class ThirdScreen extends Activity {
         protected void onPreExecute() {
             startMessage.setVisibility(View.VISIBLE);
             sortName.setVisibility(View.VISIBLE);
+
         }
 
         @Override
         protected Void doInBackground(Sort[]... params) {
+            Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
             Sort[] sort = params[0];
             for (int i = 0; i < Settings.algorithmsSelected.size(); i++) {
                 switch (Settings.algorithmsSelected.get(i)) {
@@ -98,8 +100,11 @@ public class ThirdScreen extends Activity {
 
     public void initTextViews() {
         startMessage = (TextView) findViewById(R.id.preexecute_message);
+        startMessage.setTypeface(face);
         endMessage = (TextView) findViewById(R.id.postexecute_message);
+        endMessage.setTypeface(face);
         sortName = (TextView) findViewById(R.id.sort_name);
+        sortName.setTypeface(face);
         textViews = new TextView[10];
         textViews[0] = (TextView) findViewById(R.id.tv_0);
         textViews[1] = (TextView) findViewById(R.id.tv_1);
@@ -111,6 +116,9 @@ public class ThirdScreen extends Activity {
         textViews[7] = (TextView) findViewById(R.id.tv_7);
         textViews[8] = (TextView) findViewById(R.id.tv_8);
         textViews[9] = (TextView) findViewById(R.id.tv_9);
+        for(int i = 0; i < textViews.length; i++){
+            textViews[i].setTypeface(face);
+        }
     }
 
     public void showResultsButton(View view){

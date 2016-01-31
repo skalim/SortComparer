@@ -52,6 +52,10 @@ public class SecondScreen extends Activity {
     }
 
     public void nextScreen(View view){
+        if( !isArrayChecked && !isListChecked ){
+            return;
+        }
+
         Settings.listSelected = isListChecked;
         System.out.println("Size: " + editText.getText().toString().replace(",", ""));
         Settings.size = Integer.parseInt( editText.getText().toString().replace(",", "") );
