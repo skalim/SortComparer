@@ -1,18 +1,17 @@
 package saad.sortcomparer.resultsscreen;
 
 
-
 import android.app.Activity;
 import android.os.Bundle;
-
-
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.RecyclerView;
-
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import saad.sortcomparer.R;
 import saad.sortcomparer.Settings;
+import saad.sortcomparer.firstscreen.Animator;
 import saad.sortcomparer.firstscreen.LinearLayoutManager;
 
 import saad.sortcomparer.sort.Statistics;
@@ -20,17 +19,15 @@ import saad.sortcomparer.sort.Statistics;
 
 public class ResultsActivity extends Activity {
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private GraphListAdapter mAdapter;
     private LinearLayoutManager mLayoutManager;
 
     Statistics[] statistics;
     TextView result;
     String resultString;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        resultString = "";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
@@ -48,10 +45,11 @@ public class ResultsActivity extends Activity {
 
         mAdapter = new GraphListAdapter(statistics);
         mRecyclerView.setAdapter(mAdapter);
-        
+
         setResult();
 
     }
+
 
     public void sortStatsDescending() {
         for (int i = 0; i < statistics.length; i++) {
@@ -71,6 +69,7 @@ public class ResultsActivity extends Activity {
     }
 
     public void setResult() {
+        resultString = "";
         for (int i = 0; i < statistics.length; i++) {
             resultString += statistics[i].getName() + "\n Time: " + statistics[i].getTime() + " ms \n "
                     + "Compares: " + statistics[i].getNumCompares() + "\n"

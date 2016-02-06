@@ -63,6 +63,12 @@ public class ThirdScreen extends Activity {
                         console = sort[i].getData().getConsole();
                         statistics[i] = sort[i].insertionSort(this);
                         break;
+
+                    case "MERGE":
+                        sortNameString = "Merge sort";
+                        console = sort[i].getData().getConsole();
+                        statistics[i] = sort[i].mergeSort( this );
+                        break;
                 }
             }
             return null;

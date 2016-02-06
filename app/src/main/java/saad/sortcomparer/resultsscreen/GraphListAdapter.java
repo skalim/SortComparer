@@ -23,7 +23,7 @@ import saad.sortcomparer.sort.Statistics;
  */
 public class GraphListAdapter extends RecyclerView.Adapter<GraphListAdapter.ViewHolder>{
     private Statistics[] mDataset;
-
+    private Animator animator;
 
 
     // Provide a reference to the views for each data item
@@ -32,12 +32,14 @@ public class GraphListAdapter extends RecyclerView.Adapter<GraphListAdapter.View
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView name, value;
         private ProgressBar bar;
+        private boolean doneAnimation = false;
 
         public ViewHolder(View view) {
             super(view);
             name = (TextView)view.findViewById(R.id.name);
             value = (TextView)view.findViewById(R.id.value);
             bar = (ProgressBar) view.findViewById(R.id.bar);
+
         }
     }
 
@@ -70,10 +72,14 @@ public class GraphListAdapter extends RecyclerView.Adapter<GraphListAdapter.View
 
 
         holder.name.setText(mDataset[position].getName());
-        holder.value.setText(String.valueOf(mDataset[position].getTime()) + " ms");
-        holder.bar.setProgress(time.intValue());
-        System.out.println("onBindView called");
+        holder.value.setText(String.format( "%.2f", mDataset[position].getTime() ) );
+        if( !holder.doneAnimation ){
+            animator = new Animator();
+            animator.animateBar( holder.bar, time.intValue() );
+            holder.doneAnimation = true;
+        }
     }
+
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override

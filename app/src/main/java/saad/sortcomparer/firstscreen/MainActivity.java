@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
         mDataset = new ArrayList<Data>();
         mDataset.add(new Data("Selection", "n2"));
         mDataset.add(new Data("Insertion", "n2"));
+        mDataset.add(new Data("Merge", "nlogn"));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mRecyclerView = (RecyclerView) findViewById(R.id.sortingAlgorithmsListRecyclerView);

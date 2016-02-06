@@ -18,6 +18,9 @@ public final class Settings {
             case "Insertion":
                 algorithmsSelected.add("INSERTION");
                 break;
+            case "Merge":
+                algorithmsSelected.add("MERGE");
+                break;
         }
     }
 
@@ -28,6 +31,9 @@ public final class Settings {
                 break;
             case "Insertion":
                 algorithmsSelected.remove("INSERTION");
+                break;
+            case "Merge":
+                algorithmsSelected.remove("MERGE");
                 break;
         }
     }

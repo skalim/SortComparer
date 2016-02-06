@@ -55,11 +55,19 @@ public class SortData {
         return random.nextInt(32766)+1;
     }
 
-    public int get(int position){
+    public short get(int position){
         if( isArray ){
             return array[position];
         }else{
             return list.get(position);
+        }
+    }
+
+    public void set(int position, short value){
+        if( isArray ){
+            array[position] = value;
+        }else{
+            list.set(position, value);
         }
     }
 
@@ -164,6 +172,14 @@ public class SortData {
 
     public Console getConsole() {
         return console;
+    }
+
+    public boolean isArray() {
+        return isArray;
+    }
+
+    public void setIsArray(boolean isArray) {
+        this.isArray = isArray;
     }
 
 }

@@ -93,7 +93,6 @@ public class SortingAlgorithmListAdapter extends RecyclerView.Adapter<SortingAlg
         // - replace the contents of the view with that element
         holder.algorithmNameTV.setText(mDataset.get(position).getName());
         holder.algorithmDescriptionTV.setText( mDataset.get(position).getDescription() );
-        System.out.println("onBindView called");
     }
 
     // Return the size of your dataset (invoked by the layout manager)

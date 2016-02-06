@@ -5,7 +5,7 @@
 
     android:id="@+id/algorithm_item"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="60dp"
     android:clickable="true"
 
     android:focusable="true"
@@ -18,34 +18,49 @@
 
         >
 
+
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             >
 
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:textSize="20sp" />
-
-            <ProgressBar
-                android:id="@+id/bar"
-                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/name"
-                android:layout_toRightOf="@id/name"
-                android:max="100" />
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:id="@+id/group"
+                >
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="15dp"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-thin"
+                    />
+
+                <ProgressBar
+                    android:id="@+id/bar"
+                    style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/name"
+                    android:layout_alignBottom="@id/name"
+                    android:max="100"
+                    android:progressDrawable="@drawable/progress_bar" />
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@id/bar"
-                android:layout_alignRight="@id/bar"
+                android:layout_alignRight="@id/group"
                 android:textSize="15sp" />
 
         </RelativeLayout>

@@ -13,10 +13,12 @@
     <string name="postexecute_message">Sorting complete!</string>
     <string name="preexecute_message">Now sorting...</string>
     <string name="title_activity_results">ResultsActivity</string>
+    <string name="results_time">Time/ms</string>
 
     <string-array name="tabs">
         <item>Time</item>
         <item>Compares</item>
         <item>Swaps</item>
     </string-array>
+    <string name="title_activity_results_new">ResultsNew</string>
 </resources>
