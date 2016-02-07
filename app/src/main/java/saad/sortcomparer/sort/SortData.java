@@ -37,6 +37,7 @@ public class SortData {
         }
     }
 
+
     public void initArray(){
         array = new short[size];
         for(int i = 0; i < size; i++){
@@ -66,8 +67,11 @@ public class SortData {
     public void set(int position, short value){
         if( isArray ){
             array[position] = value;
+            console.nextLine("set(" + String.valueOf(array[position]) + ") at " + position);
+
         }else{
             list.set(position, value);
+            console.nextLine("set(" + String.valueOf(list.get(position)) + ") at " + position);
         }
     }
 

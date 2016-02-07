@@ -117,13 +117,40 @@
 
     </RelativeLayout>
 
-    <Button
+    <RelativeLayout
+        android:id="@+id/results_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/console"
-        android:text="Show Results"
         android:layout_alignParentRight="true"
+        android:layout_below="@id/console"
         android:clickable="true"
-        android:onClick="showResultsButton" />
+        android:onClick="nextScreen"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:visibility="invisible"
+        >
+
+        <ImageView
+            android:id="@+id/ic_results"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/ic_insert_chart_white"
+            android:tint="@color/accent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ic_results"
+            android:layout_alignTop="@+id/ic_results"
+
+            android:layout_toLeftOf="@+id/ic_results"
+            android:gravity="center_vertical"
+            android:text="@string/results_button"
+            android:textColor="@color/accent"
+            android:textSize="30sp" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

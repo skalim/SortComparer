@@ -15,6 +15,18 @@ public class Sort {
     private int numCompares = 0;
     private int numSwaps = 0;
 
+    public Sort(SortData data) {
+        this.data = new SortData(data.size(), !data.isArray());
+        for(int i = 0; i < data.size(); i++){
+            this.data.set(i, data.get(i));
+        }
+
+        names = new HashMap<>();
+        names.put("merge", "Merge    ");
+        names.put("selection", "Selection");
+        names.put("insertion", "Insertion");
+    }
+
     public Sort(int size, boolean structure) {
         data = new SortData(size, structure);
         names = new HashMap<>();
@@ -31,9 +43,9 @@ public class Sort {
     public Statistics selectionSort(ThirdScreen.SortingTask task) {
         Statistics stats = new Statistics();
         stats.setName("Selection");
+        task.doProgress();
         timeStarted = System.nanoTime();
         for (int i = 0; i < data.size(); i++) {
-            task.doProgress();
             int min = Integer.MAX_VALUE;
             int minIndex = 0;
             for (int j = i; j < data.size(); j++) {
@@ -49,6 +61,7 @@ public class Sort {
         }
 
         stats.setTime(System.nanoTime() - timeStarted);
+        task.doProgress();
         stats.setNumCompares(numCompares);
         stats.setNumSwaps(numSwaps);
 
@@ -59,10 +72,10 @@ public class Sort {
     public Statistics insertionSort(ThirdScreen.SortingTask task) {
         Statistics stats = new Statistics();
         stats.setName("Insertion");
+        task.doProgress();
         timeStarted = System.nanoTime();
 
         for (int i = 1; i < data.size(); i++) {
-            task.doProgress();
             int k = i;
             for (int j = i - 1; j >= 0; j--) {
                 numCompares++;
@@ -76,6 +89,7 @@ public class Sort {
         }
 
         stats.setTime(System.nanoTime() - timeStarted);
+        task.doProgress();
         stats.setNumCompares(numCompares);
         stats.setNumSwaps(numSwaps);
         return stats;
@@ -90,7 +104,8 @@ public class Sort {
         stats.setName(names.get("merge"));
         long timeStarted = System.nanoTime();
         mergeSortRecursion(data);
-        stats.setTime( System.nanoTime() - timeStarted );
+        stats.setTime(System.nanoTime() - timeStarted);
+        task.doProgress();
         stats.setNumCompares(numCompares);
         stats.setNumSwaps(numSwaps);
         return stats;
@@ -107,13 +122,11 @@ public class Sort {
             leftData.set(i, data.get(i));
         }
 
-        leftData.print();
         SortData rightData = new SortData( data.size()-mid, !data.isArray() );
         for( int i = 0, j = mid; i < rightData.size(); i++, j++ ){
             rightData.set(i, data.get(j));
         }
 
-        rightData.print();
         mergeSortRecursion(leftData);
         mergeSortRecursion(rightData);
         merge(leftData, rightData, data);

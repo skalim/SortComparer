@@ -13,7 +13,11 @@
     <string name="postexecute_message">Sorting complete!</string>
     <string name="preexecute_message">Now sorting...</string>
     <string name="title_activity_results">ResultsActivity</string>
-    <string name="results_time">Time/ms</string>
+    <string name="results_time">Time</string>
+    <string name="results_swaps">Number of Swaps</string>
+    <string name="results_compares">Number of Compares</string>
+    <string name="results_button">See Results</string>
+
 
     <string-array name="tabs">
         <item>Time</item>
@@ -21,4 +25,7 @@
         <item>Swaps</item>
     </string-array>
     <string name="title_activity_results_new">ResultsNew</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

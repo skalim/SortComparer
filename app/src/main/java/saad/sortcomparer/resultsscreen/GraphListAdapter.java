@@ -21,10 +21,9 @@ import saad.sortcomparer.sort.Statistics;
 /**
  * Created by Saad on 23-Jan-16.
  */
-public class GraphListAdapter extends RecyclerView.Adapter<GraphListAdapter.ViewHolder>{
+public class GraphListAdapter extends RecyclerView.Adapter<GraphListAdapter.ViewHolder> {
     private Statistics[] mDataset;
-    private Animator animator;
-
+    private String graphType;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -32,28 +31,28 @@ public class GraphListAdapter extends RecyclerView.Adapter<GraphListAdapter.View
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView name, value;
         private ProgressBar bar;
-        private boolean doneAnimation = false;
+        private boolean doneAnimation;
 
         public ViewHolder(View view) {
             super(view);
-            name = (TextView)view.findViewById(R.id.name);
-            value = (TextView)view.findViewById(R.id.value);
+            name = (TextView) view.findViewById(R.id.name);
+            value = (TextView) view.findViewById(R.id.value);
             bar = (ProgressBar) view.findViewById(R.id.bar);
-
+            doneAnimation = false;
         }
     }
 
 
-
     // Provide a suitable constructor (depends on the kind of dataset)
-    public GraphListAdapter( Statistics[] myDataset ) {
+    public GraphListAdapter(Statistics[] myDataset, String graphType) {
         mDataset = myDataset;
+        this.graphType = graphType;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
     public GraphListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+                                                          int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.graph_item, parent, false);
@@ -67,18 +66,68 @@ public class GraphListAdapter extends RecyclerView.Adapter<GraphListAdapter.View
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        Double time = mDataset[position].getTime();
-        time = time / mDataset[0].getTime() * 100;
-
-
         holder.name.setText(mDataset[position].getName());
-        holder.value.setText(String.format( "%.2f", mDataset[position].getTime() ) );
-        if( !holder.doneAnimation ){
-            animator = new Animator();
-            animator.animateBar( holder.bar, time.intValue() );
+        Double barValue = 0d;
+        switch (graphType) {
+            case "time":
+                Double time = mDataset[position].getTime();
+                barValue = time / getMaxStatistic("time").getTime() * 100;
+                holder.value.setText( mDataset[position].getFormattedTime() );
+                break;
+            case "compares":
+                Long compares = mDataset[position].getNumCompares();
+                barValue = compares.doubleValue() / getMaxStatistic("compares").getNumCompares() * 100;
+                holder.value.setText(String.valueOf( compares ));
+                System.out.println("skalim--- setting bar value: " + barValue + " for compare: " + compares);
+                break;
+            case "swaps":
+                Long swaps = mDataset[position].getNumSwaps();
+                barValue = swaps.doubleValue() / getMaxStatistic("swaps").getNumSwaps() * 100;
+                holder.value.setText(String.valueOf( swaps ));
+                break;
+        }
+
+        if (!holder.doneAnimation) {
+            new Animator().animateBar(holder.bar, barValue.intValue());
             holder.doneAnimation = true;
         }
     }
+
+    public Statistics getMaxStatistic(String maxWhat) {
+        int maxIndex = 0;
+
+        switch (maxWhat) {
+            case "time":
+                Double maxTime = 0d;
+                for (int i = 0; i < mDataset.length; i++) {
+                    if (maxTime < mDataset[i].getTime()) {
+                        maxTime = mDataset[i].getTime();
+                        maxIndex = i;
+                    }
+                }
+                return mDataset[maxIndex];
+            case "swaps":
+                Long maxSwaps = 0l;
+                for (int i = 0; i < mDataset.length; i++) {
+                    if (maxSwaps < mDataset[i].getNumSwaps()) {
+                        maxSwaps = mDataset[i].getNumSwaps();
+                        maxIndex = i;
+                    }
+                }
+                return mDataset[maxIndex];
+            case "compares":
+                Long maxCompares = 0l;
+                for (int i = 0; i < mDataset.length; i++) {
+                    if (maxCompares < mDataset[i].getNumCompares()) {
+                        maxCompares = mDataset[i].getNumCompares();
+                        maxIndex = i;
+                    }
+                }
+                return mDataset[maxIndex];
+        }
+        return mDataset[0];
+    }
+
 
 
     // Return the size of your dataset (invoked by the layout manager)

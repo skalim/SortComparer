@@ -1,13 +1,17 @@
 package saad.sortcomparer.firstscreen;
 
+import android.animation.ObjectAnimator;
 import android.os.AsyncTask;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 /**
  * Created by Saad on 23-Jan-16.
@@ -20,6 +24,8 @@ public class Animator {
     AnimationSet animSetOut;
 
     ProgressBar progressBar;
+
+    ObjectAnimator animation;
 
     public Animator() {
         this.scaleIn = new ScaleAnimation(0, 1f, 0, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
@@ -39,14 +45,24 @@ public class Animator {
         iv.startAnimation(scaleIn);
     }
 
+    public void animateIn(RelativeLayout rl){
+        rl.startAnimation(scaleIn);
+    }
+
     public void animateOut(ImageView iv){
         iv.startAnimation(animSetOut);
     }
 
     public void animateBar(ProgressBar pb, int max){
-        progressBar = pb;
-
-        new AnimateBarTask().execute( max );
+        if(android.os.Build.VERSION.SDK_INT >= 11){
+            animation = ObjectAnimator.ofInt(pb, "progress", max);
+            animation.setDuration(500); // 0.5 second
+            animation.setInterpolator(new DecelerateInterpolator());
+            animation.start();
+        }else{
+            progressBar = pb;
+            new AnimateBarTask().execute( max );
+        }
     }
 
     public class AnimateBarTask extends AsyncTask<Integer, ProgressBar, Void>{
@@ -55,7 +71,7 @@ public class Animator {
         protected Void doInBackground(Integer... params) {
             for(i = 0; i < params[0]; i++){
                 try {
-                    Thread.sleep(3);
+                    Thread.sleep(1);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -72,7 +88,7 @@ public class Animator {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-
+            progressBar.setProgress(i);
         }
     }
 }

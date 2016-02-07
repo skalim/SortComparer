@@ -5,12 +5,15 @@ import android.graphics.Typeface;
 import android.os.*;
 import android.app.Activity;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import saad.sortcomparer.R;
 import saad.sortcomparer.Settings;
-import saad.sortcomparer.sort.Statistics;
+import saad.sortcomparer.firstscreen.Animator;
 import saad.sortcomparer.resultsscreen.ResultsActivity;
+import saad.sortcomparer.sort.SortData;
+import saad.sortcomparer.sort.Statistics;
 import saad.sortcomparer.sort.Sort;
 
 
@@ -22,9 +25,10 @@ public class ThirdScreen extends Activity {
     TextView endMessage;
     TextView sortName;
     Statistics[] statistics;
+    SortData sortData;
 
     Typeface face;
-
+    RelativeLayout button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,7 @@ public class ThirdScreen extends Activity {
         setContentView(R.layout.activity_third_screen);
         initTextViews();
         initSort();
+        button = (RelativeLayout) findViewById(R.id.results_button);
         new SortingTask().execute(sort);
     }
 
@@ -43,7 +48,6 @@ public class ThirdScreen extends Activity {
         protected void onPreExecute() {
             startMessage.setVisibility(View.VISIBLE);
             sortName.setVisibility(View.VISIBLE);
-
         }
 
         @Override
@@ -71,6 +75,11 @@ public class ThirdScreen extends Activity {
                         break;
                 }
             }
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             return null;
         }
 
@@ -87,6 +96,8 @@ public class ThirdScreen extends Activity {
         @Override
         protected void onPostExecute(Void aVoid) {
             endMessage.setVisibility(View.VISIBLE);
+            button.setVisibility(View.VISIBLE);
+            new Animator().animateIn(button);
         }
     }
 
@@ -97,10 +108,11 @@ public class ThirdScreen extends Activity {
     }
 
     public void initSort() {
+        sortData = new SortData(Settings.size, Settings.listSelected);
         sort = new Sort[Settings.algorithmsSelected.size()];
         statistics = new Statistics[Settings.algorithmsSelected.size()];
         for (int i = 0; i < sort.length; i++) {
-            sort[i] = new Sort(Settings.size, Settings.listSelected);
+            sort[i] = new Sort( sortData );
         }
     }
 
@@ -127,9 +139,10 @@ public class ThirdScreen extends Activity {
         }
     }
 
-    public void showResultsButton(View view){
+    public void nextScreen(View view){
         Intent intent = new Intent(this, ResultsActivity.class);
         intent.putExtra("Statistics", statistics);
         startActivity(intent);
     }
+
 }

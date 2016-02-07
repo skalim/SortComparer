@@ -2,15 +2,16 @@ package saad.sortcomparer.sort;
 
 import java.io.Serializable;
 
+import saad.sortcomparer.Settings;
+
 /**
  * Created by Saad on 26-Jan-16.
- * time - time to sort in ms
+ * time - time to sort in ns
  */
 public class Statistics implements Serializable {
     String name;
     double time;
     long numCompares;
-
     long numSwaps;
 
     public String getName() {
@@ -25,8 +26,25 @@ public class Statistics implements Serializable {
         return time;
     }
 
+    /**
+     *
+     * @return string that shows time in ns, ms or s. eg "0.15 ms", "3.59 s"
+     */
+    public String getFormattedTime(){
+        String toReturn = String.format("%.2f", time) + " ns";
+
+        if( time >= 1000000000 ){
+            double newTime = time/1000000000;
+            toReturn = String.format("%.2f", newTime) + " s";
+        } else if( time >= 1000000 ){
+            double newTime = time/1000000;
+            toReturn = String.format("%.2f", newTime) + " ms";
+        }
+
+        return toReturn;
+    }
+
     public void setTime(double time) {
-        time /= 1000000;
         this.time = time;
     }
 
