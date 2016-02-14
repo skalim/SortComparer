@@ -56,14 +56,15 @@
 
     <RelativeLayout
         android:id="@+id/results_button"
-        android:layout_width="wrap_content"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@id/console"
-        android:clickable="true"
         android:onClick="nextScreen"
         android:orientation="vertical"
         android:layout_marginTop="10dp"
+        style="@style/image_text_button"
+        android:padding="6dp"
         android:visibility="invisible"
         >
 
@@ -86,7 +87,7 @@
             android:gravity="center_vertical"
             android:text="@string/results_button"
             android:textColor="@color/accent"
-            android:textSize="30sp" />
+            android:textSize="30dp" />
 
     </RelativeLayout>
 

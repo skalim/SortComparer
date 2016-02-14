@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import saad.sortcomparer.R;
 import saad.sortcomparer.Settings;
-import saad.sortcomparer.firstscreen.Animator;
+import saad.sortcomparer.Animator;
 import saad.sortcomparer.firstscreen.MainActivity;
 import saad.sortcomparer.resultsscreen.ResultsActivity;
 import saad.sortcomparer.sort.SortData;

@@ -67,11 +67,11 @@ public class SortData {
     public void set(int position, short value){
         if( isArray ){
             array[position] = value;
-            console.nextLine("set(" + String.valueOf(array[position]) + ") at " + position);
+            console.nextLine("set" + String.valueOf(array[position]) + " at " + position);
 
         }else{
             list.set(position, value);
-            console.nextLine("set(" + String.valueOf(list.get(position)) + ") at " + position);
+            console.nextLine("set" + String.valueOf(list.get(position)) + " at " + position);
         }
     }
 

@@ -22,11 +22,12 @@
         android:layout_height="60dp"
         android:layout_width="60dp"
         android:layout_below="@id/sortingAlgorithmsListRecyclerView"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
         android:layout_alignParentRight="true"
         android:id="@+id/next_button"
-        android:clickable="true"
         android:onClick="nextScreen"
         android:src="@drawable/ic_arrow_forward_white"
-        android:tint="@color/accent" />
+        style="@style/image_button"
+        />
 </RelativeLayout>

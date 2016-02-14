@@ -100,7 +100,7 @@
                     android:id="@+id/ic_list"
                     style="@style/ic_data"
                     android:clickable="false"
-                    android:src="@drawable/ic_format_list_numbered_white" />
+                    android:src="@drawable/ic_linked_list_white" />
 
                 <TextView
                     style="@style/name_data"
@@ -163,14 +163,13 @@
 
     <RelativeLayout
         android:id="@+id/start_button"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@id/size"
-        android:clickable="true"
         android:onClick="nextScreen"
-
-        android:orientation="vertical">
+        style="@style/image_text_button"
+        android:padding="6dp">
 
         <ImageView
             android:id="@+id/ic_timer"
@@ -191,7 +190,7 @@
             android:gravity="center_vertical"
             android:text="@string/start_button"
             android:textColor="@color/accent"
-            android:textSize="30sp" />
+            android:textSize="30dp" />
 
     </RelativeLayout>
 </RelativeLayout>

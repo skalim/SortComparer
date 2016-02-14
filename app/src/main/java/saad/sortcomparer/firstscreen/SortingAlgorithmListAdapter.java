@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import saad.sortcomparer.Animator;
 import saad.sortcomparer.R;
 import saad.sortcomparer.Settings;
 

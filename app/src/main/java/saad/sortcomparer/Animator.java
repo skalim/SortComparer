@@ -1,18 +1,16 @@
-package saad.sortcomparer.firstscreen;
+package saad.sortcomparer;
 
 import android.animation.ObjectAnimator;
 import android.os.AsyncTask;
-import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
-import android.view.animation.LinearInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-
 /**
  * Created by Saad on 23-Jan-16.
  */
@@ -46,7 +44,11 @@ public class Animator {
     }
 
     public void animateIn(RelativeLayout rl){
-        rl.startAnimation(scaleIn);
+        int cx = rl.getWidth() / 2;
+        int cy = rl.getHeight() / 2;
+        float finalRadius = (float) Math.hypot(cx, cy);
+        android.animation.Animator anim = ViewAnimationUtils.createCircularReveal(rl, cx, cy, 0, finalRadius);
+        anim.start();
     }
 
     public void animateOut(ImageView iv){

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SortComparer</string>
 
-    <string name="firstScreenMessage">Select up to 4 algorithms to compare</string>
+    <string name="firstScreenMessage">Select algorithms to compare</string>
     <string name="choose_datastructure">Pick a data structure</string>
     <string name="choose_data_size">Select data size</string>
     <string name="action_settings">Settings</string>

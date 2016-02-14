@@ -37,4 +37,16 @@
         <item name="android:fontFamily">fonts/Minecraftia-Regular</item>
         <item name="android:textSize">10dp</item>
     </style>
+
+    <style name="image_button">
+        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
+        <item name="android:clickable">true</item>
+        <item name="android:tint">@color/accent</item>
+    </style>
+
+    <style name="image_text_button">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="android:tint">@color/accent</item>
+    </style>
 </resources>

@@ -21,19 +21,19 @@
             android:fontFamily="sans-serif-thin"
             android:textSize="25sp"/>
 
-
-
     </android.support.v4.view.ViewPager>
     <RelativeLayout
         android:id="@+id/start_over_button"
-        android:layout_width="wrap_content"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="30dp"
-        android:clickable="true"
-        android:onClick="onClickStartOver">
+        android:onClick="onClickStartOver"
+        style="@style/image_text_button"
+        android:padding="6dp"
+        >
 
         <ImageView
             android:id="@+id/ic_start_over"
@@ -54,7 +54,7 @@
             android:gravity="center_vertical"
             android:text="@string/start_over_button"
             android:textColor="@color/accent"
-            android:textSize="30sp" />
+            android:textSize="30dp" />
 
     </RelativeLayout>
 

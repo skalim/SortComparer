@@ -12,8 +12,8 @@ public class Sort {
 
     private SortData data;
     private long timeStarted;
-    private int numCompares = 0;
-    private int numSwaps = 0;
+    private long numCompares = 0;
+    private long numSwaps = 0;
 
     public Sort(SortData data) {
         this.data = new SortData(data.size(), !data.isArray());

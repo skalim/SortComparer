@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 
-import saad.sortcomparer.firstscreen.Animator;
+import saad.sortcomparer.Animator;
 import saad.sortcomparer.R;
 import saad.sortcomparer.Settings;
 import saad.sortcomparer.thirdscreen.ThirdScreen;
@@ -62,6 +62,7 @@ public class SecondScreen extends Activity {
         Settings.size = Integer.parseInt( editText.getText().toString().replace(",", "") );
         Intent intent = new Intent(this, ThirdScreen.class);
         startActivity(intent);
+        finish();
     }
 
 

@@ -1,21 +1,13 @@
 package saad.sortcomparer.resultsscreen;
 
-import android.graphics.Color;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import saad.sortcomparer.R;
-import saad.sortcomparer.Settings;
-import saad.sortcomparer.firstscreen.Animator;
-import saad.sortcomparer.firstscreen.Data;
 import saad.sortcomparer.sort.Statistics;
 
 /**
