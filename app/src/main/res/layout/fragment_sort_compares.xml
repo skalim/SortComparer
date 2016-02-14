@@ -6,11 +6,6 @@
     tools:context=".resultsscreen.ResultsActivity"
     >
 
-    <!--<TextView android:text="@string/results_compares"
-
-        android:id="@+id/title"
-        style="@style/messages_style"
-        /> -->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/compares_graph_recycler_view"

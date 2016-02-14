@@ -28,6 +28,7 @@ public class SecondScreen extends Activity {
     boolean isArrayChecked;
     boolean isListChecked;
     int minValue = 1;
+    int maxValue = 500000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,8 +119,7 @@ public class SecondScreen extends Activity {
     public void setSeekBarSettings() {
         seekBar.setProgress(1);
         seekBar.incrementProgressBy(1);
-        seekBar.setMax(26214400
-                - minValue);
+        seekBar.setMax(maxValue - minValue);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 

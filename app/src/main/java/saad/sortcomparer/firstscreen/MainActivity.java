@@ -23,10 +23,8 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mDataset = new ArrayList<Data>();
-        mDataset.add(new Data("Selection", "n2"));
-        mDataset.add(new Data("Insertion", "n2"));
-        mDataset.add(new Data("Merge", "nlogn"));
+        initDataset();
+        Settings.reset();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mRecyclerView = (RecyclerView) findViewById(R.id.sortingAlgorithmsListRecyclerView);
@@ -35,9 +33,15 @@ public class MainActivity extends Activity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-
         mAdapter = new SortingAlgorithmListAdapter(mDataset);
         mRecyclerView.setAdapter(mAdapter);
+    }
+
+    public void initDataset(){
+        mDataset = new ArrayList<>();
+        mDataset.add(new Data("Selection", "n2"));
+        mDataset.add(new Data("Insertion", "n2"));
+        mDataset.add(new Data("Merge", "nlogn"));
     }
 
     @Override

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Saad on 24-Jan-16.
+ * size: size of data selected on second screen
  */
 public final class Settings {
     public static ArrayList<String> algorithmsSelected = new ArrayList<>();
@@ -36,6 +37,12 @@ public final class Settings {
                 algorithmsSelected.remove("MERGE");
                 break;
         }
+    }
+
+    public static void reset(){
+        algorithmsSelected.clear();
+        listSelected = false;
+        size = 1;
     }
 
 }

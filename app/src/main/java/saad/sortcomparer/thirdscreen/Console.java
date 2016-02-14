@@ -10,7 +10,9 @@ import java.awt.font.TextAttribute;
 public class Console {
 
     String[] lines;
+
     int numLines;
+    int iterator;
 
     public Console() {
         numLines = 0;
@@ -28,9 +30,13 @@ public class Console {
             return;
         }
 
-        for(int i = 0; i <= 8; i++){
-            lines[i] = lines[i+1];
+        for(iterator = 0; iterator <= 8; iterator++){
+            lines[iterator] = lines[iterator+1];
         }
         lines[9] = line;
+    }
+
+    public int getNumLines() {
+        return numLines;
     }
 }

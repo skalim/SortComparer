@@ -77,20 +77,20 @@ public class GraphListAdapter extends RecyclerView.Adapter<GraphListAdapter.View
             case "compares":
                 Long compares = mDataset[position].getNumCompares();
                 barValue = compares.doubleValue() / getMaxStatistic("compares").getNumCompares() * 100;
-                holder.value.setText(String.valueOf( compares ));
+                holder.value.setText( mDataset[position].getFormattedNumCompares() );
                 System.out.println("skalim--- setting bar value: " + barValue + " for compare: " + compares);
                 break;
             case "swaps":
                 Long swaps = mDataset[position].getNumSwaps();
                 barValue = swaps.doubleValue() / getMaxStatistic("swaps").getNumSwaps() * 100;
-                holder.value.setText(String.valueOf( swaps ));
+                holder.value.setText( mDataset[position].getFormattedNumSwaps() );
                 break;
         }
-
-        if (!holder.doneAnimation) {
+        holder.bar.setProgress(barValue.intValue());
+        /*if (!holder.doneAnimation) {
             new Animator().animateBar(holder.bar, barValue.intValue());
             holder.doneAnimation = true;
-        }
+        }*/
     }
 
     public Statistics getMaxStatistic(String maxWhat) {

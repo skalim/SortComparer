@@ -43,7 +43,6 @@ public class Sort {
     public Statistics selectionSort(ThirdScreen.SortingTask task) {
         Statistics stats = new Statistics();
         stats.setName("Selection");
-        task.doProgress();
         timeStarted = System.nanoTime();
         for (int i = 0; i < data.size(); i++) {
             int min = Integer.MAX_VALUE;
@@ -58,6 +57,7 @@ public class Sort {
             if( data.swap(i, minIndex) ){
                 numSwaps++;
             }
+            task.doProgress();
         }
 
         stats.setTime(System.nanoTime() - timeStarted);
@@ -86,6 +86,7 @@ public class Sort {
                     k = j;
                 }
             }
+            task.doProgress();
         }
 
         stats.setTime(System.nanoTime() - timeStarted);
@@ -96,14 +97,12 @@ public class Sort {
     }
 
     //Merge Sort functions
-
-
     public Statistics mergeSort( ThirdScreen.SortingTask task ){
         task.doProgress();
         Statistics stats = new Statistics();
         stats.setName(names.get("merge"));
         long timeStarted = System.nanoTime();
-        mergeSortRecursion(data);
+        mergeSortRecursion(data, task);
         stats.setTime(System.nanoTime() - timeStarted);
         task.doProgress();
         stats.setNumCompares(numCompares);
@@ -111,7 +110,7 @@ public class Sort {
         return stats;
     }
 
-    public void mergeSortRecursion(SortData data){
+    public void mergeSortRecursion(SortData data, ThirdScreen.SortingTask task){
         if( data.size() < 2){
             return;
         }
@@ -127,12 +126,10 @@ public class Sort {
             rightData.set(i, data.get(j));
         }
 
-        mergeSortRecursion(leftData);
-        mergeSortRecursion(rightData);
-        merge(leftData, rightData, data);
-    }
+        mergeSortRecursion(leftData, task);
+        mergeSortRecursion(rightData, task);
 
-    public void merge(SortData leftData, SortData rightData, SortData auxiliaryData ){
+        //Merge step
         int leftSize = leftData.size();
         int rightSize = rightData.size();
 
@@ -141,26 +138,28 @@ public class Sort {
             numCompares++;
             numSwaps++;
             if( leftData.get(i) <= rightData.get(j) ){
-                auxiliaryData.set(k, leftData.get(i));
+                data.set(k, leftData.get(i));
                 i++;
             } else{
-                auxiliaryData.set(k, rightData.get(j));
+                data.set(k, rightData.get(j));
                 j++;
             }
             k++;
         }
 
         while( i < leftSize ){
-            auxiliaryData.set(k, leftData.get(i));
+            data.set(k, leftData.get(i));
             k++;
             i++;
             numSwaps++;
         }
-        while( j < rightSize ){
-            auxiliaryData.set(k, rightData.get(j));
+        while (j < rightSize ){
+            data.set(k, rightData.get(j));
             k++;
             j++;
             numSwaps++  ;
         }
+        task.doProgress();
     }
+
 }

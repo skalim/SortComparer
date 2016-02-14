@@ -36,80 +36,17 @@
             style="@style/text_console"
             />
         <TextView
-            android:id="@+id/tv_0"
+            android:id="@+id/sort_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/sort_name"
             style="@style/text_console"
             />
         <TextView
-            android:id="@+id/tv_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_0"
-            style="@style/text_console"
-            />
-        <TextView
-            android:id="@+id/tv_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_1"
-            style="@style/text_console"
-            />
-        <TextView
-            android:id="@+id/tv_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_2"
-            style="@style/text_console"
-            />
-        <TextView
-            android:id="@+id/tv_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_3"
-            style="@style/text_console"
-            />
-        <TextView
-            android:id="@+id/tv_5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_4"
-            style="@style/text_console"
-            />
-        <TextView
-            android:id="@+id/tv_6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_5"
-            style="@style/text_console"
-            />
-        <TextView
-            android:id="@+id/tv_7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_6"
-            style="@style/text_console"
-            />
-        <TextView
-            android:id="@+id/tv_8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_7"
-            style="@style/text_console"
-            />
-        <TextView
-            android:id="@+id/tv_9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_8"
-            style="@style/text_console"
-            />
-        <TextView
             android:id="@+id/postexecute_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_9"
+            android:layout_below="@id/sort_text"
             android:text="@string/postexecute_message"
             android:visibility="gone"
             style="@style/text_console"
@@ -152,5 +89,18 @@
             android:textSize="30sp" />
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sort_cancel_button"
+        android:layout_below="@id/console"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/accent"
+        android:textSize="30sp"
+        android:clickable="true"
+        android:onClick="onClickCancelButton"
+        />
 
 </RelativeLayout>

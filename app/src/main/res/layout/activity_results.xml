@@ -1,39 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".resultsscreen.ResultsActivity"
-
-    android:layout_gravity="center_horizontal"
-    android:orientation="vertical"
-    >
-
-<android.support.v4.view.ViewPager
-    android:id="@+id/pager"
     android:layout_width="match_parent"
-    android:layout_height="0px"
-    android:layout_weight="1"
-    >
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    tools:context=".resultsscreen.ResultsActivity">
 
-    <android.support.v4.view.PagerTabStrip
-        android:id="@+id/pager_title_strip"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:background="@color/primary_dark"
-        android:textSize="25sp"
-        android:fontFamily="sans-serif-thin"
-        >
+        android:layout_height="wrap_content">
+
+        <android.support.v4.view.PagerTabStrip
+            android:id="@+id/pager_title_strip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@color/primary_dark"
+            android:fontFamily="sans-serif-thin"
+            android:textSize="25sp"/>
 
 
-    </android.support.v4.view.PagerTabStrip>
 
-</android.support.v4.view.ViewPager>
-
-    <TextView
-        android:id="@+id/result"
+    </android.support.v4.view.ViewPager>
+    <RelativeLayout
+        android:id="@+id/start_over_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
+        android:clickable="true"
+        android:onClick="onClickStartOver">
+
+        <ImageView
+            android:id="@+id/ic_start_over"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/ic_replay_white"
+            android:tint="@color/accent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ic_start_over"
+            android:layout_alignTop="@+id/ic_start_over"
+
+            android:layout_toLeftOf="@+id/ic_start_over"
+            android:gravity="center_vertical"
+            android:text="@string/start_over_button"
+            android:textColor="@color/accent"
+            android:textSize="30sp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

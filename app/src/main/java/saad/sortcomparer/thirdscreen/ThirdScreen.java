@@ -1,5 +1,7 @@
 package saad.sortcomparer.thirdscreen;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.*;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import saad.sortcomparer.R;
 import saad.sortcomparer.Settings;
 import saad.sortcomparer.firstscreen.Animator;
+import saad.sortcomparer.firstscreen.MainActivity;
 import saad.sortcomparer.resultsscreen.ResultsActivity;
 import saad.sortcomparer.sort.SortData;
 import saad.sortcomparer.sort.Statistics;
@@ -18,7 +21,7 @@ import saad.sortcomparer.sort.Sort;
 
 
 public class ThirdScreen extends Activity {
-    TextView[] textViews;
+    TextView sortingText;
     Console console;
     Sort[] sort;
     TextView startMessage;
@@ -30,6 +33,8 @@ public class ThirdScreen extends Activity {
     Typeface face;
     RelativeLayout button;
 
+    TextView cancelButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         face = Typeface.createFromAsset(getAssets(), "fonts/Minecraftia-Regular.ttf");
@@ -38,6 +43,7 @@ public class ThirdScreen extends Activity {
         initTextViews();
         initSort();
         button = (RelativeLayout) findViewById(R.id.results_button);
+        cancelButton = (TextView) findViewById(R.id.cancel_button);
         new SortingTask().execute(sort);
     }
 
@@ -95,6 +101,7 @@ public class ThirdScreen extends Activity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            cancelButton.setVisibility(View.GONE);
             endMessage.setVisibility(View.VISIBLE);
             button.setVisibility(View.VISIBLE);
             new Animator().animateIn(button);
@@ -102,9 +109,11 @@ public class ThirdScreen extends Activity {
     }
 
     public void updateTextViews() {
-        for (int i = 0; i < textViews.length; i++) {
-            textViews[i].setText(console.getLine(i));
+        String text = "";
+        for (int i = 0; i < console.getNumLines(); i++) {
+            text += console.getLine(i) + "\n";
         }
+        sortingText.setText(text);
     }
 
     public void initSort() {
@@ -123,26 +132,38 @@ public class ThirdScreen extends Activity {
         endMessage.setTypeface(face);
         sortName = (TextView) findViewById(R.id.sort_name);
         sortName.setTypeface(face);
-        textViews = new TextView[10];
-        textViews[0] = (TextView) findViewById(R.id.tv_0);
-        textViews[1] = (TextView) findViewById(R.id.tv_1);
-        textViews[2] = (TextView) findViewById(R.id.tv_2);
-        textViews[3] = (TextView) findViewById(R.id.tv_3);
-        textViews[4] = (TextView) findViewById(R.id.tv_4);
-        textViews[5] = (TextView) findViewById(R.id.tv_5);
-        textViews[6] = (TextView) findViewById(R.id.tv_6);
-        textViews[7] = (TextView) findViewById(R.id.tv_7);
-        textViews[8] = (TextView) findViewById(R.id.tv_8);
-        textViews[9] = (TextView) findViewById(R.id.tv_9);
-        for(int i = 0; i < textViews.length; i++){
-            textViews[i].setTypeface(face);
-        }
+        sortingText = (TextView) findViewById(R.id.sort_text);
+        sortingText.setTypeface(face);
     }
 
     public void nextScreen(View view){
         Intent intent = new Intent(this, ResultsActivity.class);
         intent.putExtra("Statistics", statistics);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Navigate back?")
+                .setMessage("Sort results will be lost")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                        Intent intent = new Intent(ThirdScreen.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+    public void onClickCancelButton(View v){
+        onBackPressed();
     }
 
 }

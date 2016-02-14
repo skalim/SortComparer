@@ -8,7 +8,7 @@
     <string name="title_activity_second_screen">SecondScreen</string>
     <string name="start_button">Start</string>
     <string name="title_activity_third_screen">ThirdScreen</string>
-    <string name="data_range_max">26,214,400</string>
+    <string name="data_range_max">500,000</string>
     <string name="data_range_min">1</string>
     <string name="postexecute_message">Sorting complete!</string>
     <string name="preexecute_message">Now sorting...</string>
@@ -17,7 +17,8 @@
     <string name="results_swaps">Number of Swaps</string>
     <string name="results_compares">Number of Compares</string>
     <string name="results_button">See Results</string>
-
+    <string name="start_over_button">Start Over</string>
+    <string name="sort_cancel_button">Cancel</string>
 
     <string-array name="tabs">
         <item>Time</item>

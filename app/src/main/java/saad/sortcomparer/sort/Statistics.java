@@ -35,10 +35,10 @@ public class Statistics implements Serializable {
 
         if( time >= 1000000000 ){
             double newTime = time/1000000000;
-            toReturn = String.format("%.2f", newTime) + " s";
+            toReturn = String.format("%,.2f", newTime) + " s";
         } else if( time >= 1000000 ){
             double newTime = time/1000000;
-            toReturn = String.format("%.2f", newTime) + " ms";
+            toReturn = String.format("%,.2f", newTime) + " ms";
         }
 
         return toReturn;
@@ -52,12 +52,20 @@ public class Statistics implements Serializable {
         return numCompares;
     }
 
+    public String getFormattedNumCompares() {
+        return String.format("%,d", numCompares);
+    }
+
     public void setNumCompares(long numCompares) {
         this.numCompares = numCompares;
     }
 
     public long getNumSwaps() {
         return numSwaps;
+    }
+
+    public String getFormattedNumSwaps() {
+        return String.format("%,d", numSwaps);
     }
 
     public void setNumSwaps(long numSwaps) {
