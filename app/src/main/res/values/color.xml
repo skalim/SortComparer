@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="card_view_name">#ECEFF1</color>
+    <color name="card_view_description">#ECEFF1</color>
+    <color name="card_view_background">#263238</color>
+    <color name="card_view_background_selected">#37474F</color>
+
+    <color name="graph_card_view_background">#263238</color>
+
+    <color name="colorPrimary">#607D8B</color>
+    <color name="colorPrimaryDark">#263238</color>
+    <color name="colorAccent">#FF5722</color>
+    <color name="colorAccentDark">#BF360C</color>
+    <color name="colorBackgroundMaterialDark">#FF303030</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+</resources>

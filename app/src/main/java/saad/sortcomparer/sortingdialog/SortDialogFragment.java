@@ -1,27 +1,36 @@
-package saad.sortcomparer.thirdscreen;
+package saad.sortcomparer.sortingdialog;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.os.*;
-import android.app.Activity;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import saad.sortcomparer.Animator;
 import saad.sortcomparer.R;
 import saad.sortcomparer.Settings;
-import saad.sortcomparer.Animator;
-import saad.sortcomparer.firstscreen.MainActivity;
-import saad.sortcomparer.resultsscreen.ResultsActivity;
+import saad.sortcomparer.sort.Sort;
 import saad.sortcomparer.sort.SortData;
 import saad.sortcomparer.sort.Statistics;
-import saad.sortcomparer.sort.Sort;
+import saad.sortcomparer.resultsscreen.ResultsActivity;
 
 
-public class ThirdScreen extends Activity {
+/**
+ */
+public class SortDialogFragment extends DialogFragment implements View.OnClickListener{
+
+    View view;
     TextView sortingText;
+    LinearLayout resultsButton;
+    TextView cancelButton;
+
     Console console;
     Sort[] sort;
     TextView startMessage;
@@ -31,20 +40,44 @@ public class ThirdScreen extends Activity {
     SortData sortData;
 
     Typeface face;
-    RelativeLayout button;
 
-    TextView cancelButton;
+    SortingTask sortingTask;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        face = Typeface.createFromAsset(getAssets(), "fonts/Minecraftia-Regular.ttf");
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_third_screen);
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog.Builder b = new AlertDialog.Builder(getActivity());
+
+        LayoutInflater i = getActivity().getLayoutInflater();
+
+        view = i.inflate(R.layout.fragment_sort_dialog, null);
+        face = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Minecraftia-Regular.ttf");
         initTextViews();
         initSort();
-        button = (RelativeLayout) findViewById(R.id.results_button);
-        cancelButton = (TextView) findViewById(R.id.cancel_button);
-        new SortingTask().execute(sort);
+        sortingTask = new SortingTask();
+        sortingTask.execute(sort);
+
+        b.setView(view);
+        return b.create();
+    }
+
+    @Override
+    public void onDestroy() {
+        sortingTask.cancel(true);
+        super.onDestroy();
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id){
+            case R.id.results_button:
+                onClickSeeResults();
+                break;
+            case R.id.cancel_button:
+                sortingTask.cancel(true);
+                getDialog().dismiss();
+                break;
+        }
     }
 
     public class SortingTask extends AsyncTask<Sort[], Void, Void> {
@@ -77,7 +110,7 @@ public class ThirdScreen extends Activity {
                     case "MERGE":
                         sortNameString = "Merge sort";
                         console = sort[i].getData().getConsole();
-                        statistics[i] = sort[i].mergeSort( this );
+                        statistics[i] = sort[i].mergeSort(this);
                         break;
                 }
             }
@@ -103,8 +136,8 @@ public class ThirdScreen extends Activity {
         protected void onPostExecute(Void aVoid) {
             cancelButton.setVisibility(View.GONE);
             endMessage.setVisibility(View.VISIBLE);
-            button.setVisibility(View.VISIBLE);
-            new Animator().animateIn(button);
+            resultsButton.setVisibility(View.VISIBLE);
+            new Animator().animateIn(resultsButton);
         }
     }
 
@@ -121,49 +154,32 @@ public class ThirdScreen extends Activity {
         sort = new Sort[Settings.algorithmsSelected.size()];
         statistics = new Statistics[Settings.algorithmsSelected.size()];
         for (int i = 0; i < sort.length; i++) {
-            sort[i] = new Sort( sortData );
+            sort[i] = new Sort(sortData);
         }
     }
 
     public void initTextViews() {
-        startMessage = (TextView) findViewById(R.id.preexecute_message);
+        startMessage = (TextView) view.findViewById(R.id.preexecute_message);
         startMessage.setTypeface(face);
-        endMessage = (TextView) findViewById(R.id.postexecute_message);
+        endMessage = (TextView) view.findViewById(R.id.postexecute_message);
         endMessage.setTypeface(face);
-        sortName = (TextView) findViewById(R.id.sort_name);
+        sortName = (TextView) view.findViewById(R.id.sort_name);
         sortName.setTypeface(face);
-        sortingText = (TextView) findViewById(R.id.sort_text);
+        sortingText = (TextView) view.findViewById(R.id.sort_text);
         sortingText.setTypeface(face);
+
+        resultsButton = (LinearLayout) view.findViewById(R.id.results_button);
+        cancelButton = (TextView) view.findViewById(R.id.cancel_button);
+
+        cancelButton.setOnClickListener(this);
+        resultsButton.setOnClickListener(this);
     }
 
-    public void nextScreen(View view){
-        Intent intent = new Intent(this, ResultsActivity.class);
+    public void onClickSeeResults(){
+        Intent intent = new Intent(getActivity(), ResultsActivity.class);
         intent.putExtra("Statistics", statistics);
         startActivity(intent);
+        getDialog().dismiss();
+        getActivity().finish();
     }
-
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Navigate back?")
-                .setMessage("Sort results will be lost")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                        Intent intent = new Intent(ThirdScreen.this, MainActivity.class);
-                        startActivity(intent);
-                    }
-
-                })
-                .setNegativeButton("No", null)
-                .show();
-    }
-
-    public void onClickCancelButton(View v){
-        onBackPressed();
-    }
-
 }

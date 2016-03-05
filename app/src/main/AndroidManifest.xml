@@ -7,27 +7,23 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
+
         <activity
-            android:name=".firstscreen.MainActivity"
+            android:name=".homescreen.MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".secondscreen.SecondScreen"
-            android:label="@string/title_activity_second_screen"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".thirdscreen.ThirdScreen"
-            android:label="@string/title_activity_third_screen"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".resultsscreen.ResultsActivity"
-            android:label="@string/title_activity_results_new"></activity>
+            android:label="@string/title_activity_results_new" />
+
     </application>
 
 </manifest>

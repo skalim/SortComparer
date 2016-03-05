@@ -1,26 +1,19 @@
 <resources>
-
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Material.NoActionBar">
+    <style name="AppTheme" parent="AppTheme.Base"/>
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="android:colorPrimary">@color/primary</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <!--   darker variant for the status bar and contextual app bars -->
-        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <!--   theme UI controls like checkboxes and text fields -->
-        <item name="android:colorAccent">@color/accent</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <color name="card_view_name">#ECEFF1</color>
-    <color name="card_view_description">#ECEFF1</color>
-    <color name="card_view_background">#263238</color>
-    <color name="card_view_background_selected">#37474F</color>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <color name="graph_card_view_background">#263238</color>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <color name="primary">#607D8B</color>
-    <color name="primary_dark">#263238</color>
-    <color name="accent">#FF5722</color>
 
-    <color name="black">#000000</color>
-    <color name="white">#FFFFFF</color>
 </resources>

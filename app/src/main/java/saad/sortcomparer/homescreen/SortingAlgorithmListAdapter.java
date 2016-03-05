@@ -1,4 +1,4 @@
-package saad.sortcomparer.firstscreen;
+package saad.sortcomparer.homescreen;
 
 import android.graphics.Color;
 import android.support.v7.widget.CardView;
@@ -19,9 +19,7 @@ import saad.sortcomparer.Settings;
  * Created by Saad on 23-Jan-16.
  */
 public class SortingAlgorithmListAdapter extends RecyclerView.Adapter<SortingAlgorithmListAdapter.ViewHolder>{
-    private ArrayList<Data> mDataset;
-
-
+    private ArrayList<SortListItem> mDataset;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -47,20 +45,17 @@ public class SortingAlgorithmListAdapter extends RecyclerView.Adapter<SortingAlg
             view.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    System.out.println("listener called");
                     if(isChecked){
                         animator.animateOut(checkCircle);
                         checkCircle.setVisibility(View.INVISIBLE);
                         cardView.setCardBackgroundColor(Color.parseColor("#263238"));
                         isChecked = false;
-                        System.out.println("Removing: " + algorithmNameTV.getText().toString());
                         Settings.removeSelected( algorithmNameTV.getText().toString() );
                     }else{
                         animator.animateIn(checkCircle);
                         checkCircle.setVisibility(View.VISIBLE);
                         cardView.setCardBackgroundColor(Color.parseColor("#37474F"));
                         isChecked = true;
-                        System.out.println("Adding: " + algorithmNameTV.getText().toString());
                         Settings.addSelected( algorithmNameTV.getText().toString() );
                     }
                 }
@@ -71,7 +66,7 @@ public class SortingAlgorithmListAdapter extends RecyclerView.Adapter<SortingAlg
 
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public SortingAlgorithmListAdapter(ArrayList<Data> myDataset) {
+    public SortingAlgorithmListAdapter(ArrayList<SortListItem> myDataset) {
         mDataset = myDataset;
     }
 

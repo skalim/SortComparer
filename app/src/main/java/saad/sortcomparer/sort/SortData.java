@@ -3,7 +3,8 @@ package saad.sortcomparer.sort;
 import java.util.ArrayList;
 import java.util.Random;
 
-import saad.sortcomparer.thirdscreen.Console;
+import saad.sortcomparer.sortingdialog.Console;
+
 
 /**
  * Created by Saad on 23-Jan-16.
@@ -52,6 +53,7 @@ public class SortData {
         }
     }
 
+    //32766
     public int getNumber(){
         return random.nextInt(32766)+1;
     }
@@ -67,11 +69,11 @@ public class SortData {
     public void set(int position, short value){
         if( isArray ){
             array[position] = value;
-            console.nextLine("set" + String.valueOf(array[position]) + " at " + position);
+            console.nextLine("set " + String.valueOf(array[position]) + " at " + position);
 
         }else{
             list.set(position, value);
-            console.nextLine("set" + String.valueOf(list.get(position)) + " at " + position);
+            console.nextLine("set " + String.valueOf(list.get(position)) + " at " + position);
         }
     }
 

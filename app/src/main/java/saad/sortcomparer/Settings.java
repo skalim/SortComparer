@@ -11,6 +11,10 @@ public final class Settings {
     public static boolean listSelected = false;
     public static int size = 1;
 
+    public static int numSelected(){
+        return algorithmsSelected.size();
+    }
+
     public static void addSelected(String name) {
         switch (name) {
             case "Selection":

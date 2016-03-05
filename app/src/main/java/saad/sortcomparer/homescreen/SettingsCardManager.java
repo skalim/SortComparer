@@ -1,22 +1,29 @@
-package saad.sortcomparer.secondscreen;
+package saad.sortcomparer.homescreen;
 
-import android.content.Intent;
+import android.content.Context;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import saad.sortcomparer.Animator;
 import saad.sortcomparer.R;
 import saad.sortcomparer.Settings;
-import saad.sortcomparer.thirdscreen.ThirdScreen;
 
-public class SecondScreen extends Activity {
+/**
+ * Created by Saad on 05-Mar-16.
+ */
+public class SettingsCardManager {
+    final int VALUE_MIN = 1;
+    final int VALUE_MAX = 500000;
+
+    // Views
+    AppCompatActivity activity;
+    SlidingCardLayout cardSettings;
     SeekBar seekBar;
     EditText editText;
     CardView arrayCard;
@@ -24,47 +31,32 @@ public class SecondScreen extends Activity {
     Animator animator;
     ImageView checkCircleArray;
     ImageView checkCircleList;
-    RelativeLayout nextScreenButton;
+
     boolean isArrayChecked;
     boolean isListChecked;
-    int minValue = 1;
-    int maxValue = 500000;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        for(int i = 0; i < Settings.algorithmsSelected.size(); i++){
-            System.out.println(Settings.algorithmsSelected.get(i));
-        }
+    public SettingsCardManager(Context context) {
+        this.activity = ((AppCompatActivity)context);
+        bind();
+
         animator = new Animator();
         isArrayChecked = false;
         isListChecked = false;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second_screen);
-        seekBar = (SeekBar) findViewById(R.id.seekBar);
-        editText = (EditText) findViewById(R.id.size);
-        arrayCard = (CardView) findViewById(R.id.array_card);
-        listCard = (CardView) findViewById(R.id.list_card);
-        checkCircleArray = (ImageView) findViewById(R.id.check_circle_array);
-        checkCircleList = (ImageView) findViewById(R.id.check_circle_list);
-        nextScreenButton = (RelativeLayout) findViewById(R.id.start_button);
-
         setSeekBarSettings();
         setCardSettings();
     }
 
-    public void nextScreen(View view){
-        if( !isArrayChecked && !isListChecked ){
-            return;
-        }
-
-        Settings.listSelected = isListChecked;
-        System.out.println("Size: " + editText.getText().toString().replace(",", ""));
-        Settings.size = Integer.parseInt( editText.getText().toString().replace(",", "") );
-        Intent intent = new Intent(this, ThirdScreen.class);
-        startActivity(intent);
-        finish();
+    public void bind(){
+        cardSettings = (SlidingCardLayout) activity.findViewById(R.id.card_settings);
+        seekBar = (SeekBar) cardSettings.findViewById(R.id.seekBar);
+        editText = (EditText) cardSettings.findViewById(R.id.size);
+        arrayCard = (CardView) cardSettings.findViewById(R.id.array_card);
+        listCard = (CardView) cardSettings.findViewById(R.id.list_card);
+        checkCircleArray = (ImageView) cardSettings.findViewById(R.id.check_circle_array);
+        checkCircleList = (ImageView) cardSettings.findViewById(R.id.check_circle_list);
+        TextView headerSettings = (TextView) cardSettings.findViewById(R.id.header);
+        headerSettings.setText(activity.getResources().getString(R.string.header_settings));
     }
-
 
     public void setCardSettings() {
         arrayCard.setOnClickListener(new CardView.OnClickListener() {
@@ -82,6 +74,8 @@ public class SecondScreen extends Activity {
 
                 isArrayChecked = true;
                 isListChecked = false;
+                Settings.listSelected = isListChecked;
+
                 cardSelected(arrayCard);
                 cardUnselected(listCard);
             }
@@ -101,6 +95,8 @@ public class SecondScreen extends Activity {
                 }
                 isArrayChecked = false;
                 isListChecked = true;
+                Settings.listSelected = isListChecked;
+
                 cardSelected(listCard);
                 cardUnselected(arrayCard);
             }
@@ -116,17 +112,16 @@ public class SecondScreen extends Activity {
         cardView.setCardBackgroundColor(Color.parseColor("#263238"));
     }
 
-
     public void setSeekBarSettings() {
         seekBar.setProgress(1);
         seekBar.incrementProgressBy(1);
-        seekBar.setMax(maxValue - minValue);
+        seekBar.setMax(VALUE_MAX - VALUE_MIN);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progress = progress + minValue;
+                progress = progress + VALUE_MIN;
                 String s = String.format("%,d", progress);
                 editText.setText(s);
             }
@@ -141,5 +136,13 @@ public class SecondScreen extends Activity {
 
             }
         });
+    }
+
+    public boolean noDataStructureSelected(){
+        return !isArrayChecked && !isListChecked;
+    }
+
+    public int dataStructureSize(){
+        return Integer.parseInt(editText.getText().toString().replace(",", ""));
     }
 }

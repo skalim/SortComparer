@@ -1,8 +1,9 @@
 package saad.sortcomparer.sort;
 
 import java.util.HashMap;
+import java.util.Random;
 
-import saad.sortcomparer.thirdscreen.ThirdScreen;
+import saad.sortcomparer.sortingdialog.SortDialogFragment;
 
 /**
  * Created by Saad on 23-Jan-16.
@@ -15,6 +16,8 @@ public class Sort {
     private long numCompares = 0;
     private long numSwaps = 0;
 
+    private Random random;
+
     public Sort(SortData data) {
         this.data = new SortData(data.size(), !data.isArray());
         for(int i = 0; i < data.size(); i++){
@@ -25,6 +28,8 @@ public class Sort {
         names.put("merge", "Merge    ");
         names.put("selection", "Selection");
         names.put("insertion", "Insertion");
+
+        random = new Random();
     }
 
     public Sort(int size, boolean structure) {
@@ -33,6 +38,8 @@ public class Sort {
         names.put("merge", "Merge    ");
         names.put("selection", "Selection");
         names.put("insertion", "Insertion");
+
+        random = new Random();
     }
 
     public SortData getData() {
@@ -40,7 +47,7 @@ public class Sort {
     }
 
     //Selection Sort
-    public Statistics selectionSort(ThirdScreen.SortingTask task) {
+    public Statistics selectionSort(SortDialogFragment.SortingTask task) {
         Statistics stats = new Statistics();
         stats.setName("Selection");
         timeStarted = System.nanoTime();
@@ -69,7 +76,7 @@ public class Sort {
     }
 
     //Insertion Sort
-    public Statistics insertionSort(ThirdScreen.SortingTask task) {
+    public Statistics insertionSort(SortDialogFragment.SortingTask task) {
         Statistics stats = new Statistics();
         stats.setName("Insertion");
         task.doProgress();
@@ -97,7 +104,7 @@ public class Sort {
     }
 
     //Merge Sort functions
-    public Statistics mergeSort( ThirdScreen.SortingTask task ){
+    public Statistics mergeSort( SortDialogFragment.SortingTask task ){
         task.doProgress();
         Statistics stats = new Statistics();
         stats.setName(names.get("merge"));
@@ -110,7 +117,7 @@ public class Sort {
         return stats;
     }
 
-    public void mergeSortRecursion(SortData data, ThirdScreen.SortingTask task){
+    public void mergeSortRecursion(SortData data, SortDialogFragment.SortingTask task){
         if( data.size() < 2){
             return;
         }
@@ -136,30 +143,61 @@ public class Sort {
         int i = 0; int j = 0; int k = 0;
         while( i < leftSize && j < rightSize ){
             numCompares++;
-            numSwaps++;
+
             if( leftData.get(i) <= rightData.get(j) ){
-                data.set(k, leftData.get(i));
-                i++;
+                data.set(k++, leftData.get(i++));
             } else{
-                data.set(k, rightData.get(j));
-                j++;
+                data.set(k++, rightData.get(j++));
+                numSwaps++;
+                task.doProgress();
             }
-            k++;
         }
 
         while( i < leftSize ){
-            data.set(k, leftData.get(i));
-            k++;
-            i++;
-            numSwaps++;
+            data.set(k++, leftData.get(i++));
+            task.doProgress();
         }
         while (j < rightSize ){
-            data.set(k, rightData.get(j));
-            k++;
-            j++;
-            numSwaps++  ;
+            data.set(k++, rightData.get(j++));
+            task.doProgress();
         }
-        task.doProgress();
     }
 
+    //Quick sort
+    public void quickSort(){
+        quickSortRecursion(data, 0, data.size() - 1);
+    }
+
+    public void quickSortRecursion(SortData data, int low, int high) {
+        if( data.size() <= 0 || low >= high){
+            return;
+        }
+
+        int pivot = low + (high-low)/2;
+        System.out.println(pivot);
+        int i = low, j = high;
+        while (i <= j) {
+            while (data.get(i) < data.get(pivot)) {
+                i++;
+            }
+
+            while (data.get(j) > data.get(pivot)) {
+                j--;
+            }
+
+            if (i <= j) {
+                data.swap(i, j);
+                i++;
+                j--;
+            }
+        }
+
+        if( low < j ){
+            quickSortRecursion(data, low, j);
+        }
+
+        if( high > i ){
+            quickSortRecursion(data, i, high);
+        }
+    }
 }

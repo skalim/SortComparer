@@ -1,8 +1,4 @@
-package saad.sortcomparer.thirdscreen;
-
-import android.widget.TextView;
-
-import java.awt.font.TextAttribute;
+package saad.sortcomparer.sortingdialog;
 
 /**
  * Created by Saad on 24-Jan-16.

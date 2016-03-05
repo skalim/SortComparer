@@ -2,6 +2,9 @@
     <string name="app_name">SortComparer</string>
 
     <string name="firstScreenMessage">Select algorithms to compare</string>
+    <string name="header_sorts">Algorithms</string>
+    <string name="header_settings">Settings</string>
+
     <string name="choose_datastructure">Pick a data structure</string>
     <string name="choose_data_size">Select data size</string>
     <string name="action_settings">Settings</string>
@@ -29,4 +32,24 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_test">TestActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string-array name="sorting_algorithms">
+        <item>Selection</item>
+        <item>n2</item>
+
+        <item>Insertion</item>
+        <item>n2</item>
+
+        <item>Merge</item>
+        <item>nlogn</item>
+    </string-array>
+
+    <string name="error_no_algorithms_selected">No algorithms selected</string>
+    <string name="error_no_datastructure_selected">No data structure selected</string>
+
 </resources>

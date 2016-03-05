@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import saad.sortcomparer.R;
-import saad.sortcomparer.firstscreen.LinearLayoutManager;
+import saad.sortcomparer.homescreen.LinearLayoutManager;
 
 public class SortComparesFragment extends Fragment {
     private RecyclerView mRecyclerView;

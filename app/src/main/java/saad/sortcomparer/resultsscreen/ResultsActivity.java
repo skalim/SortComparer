@@ -8,13 +8,11 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import saad.sortcomparer.R;
 import saad.sortcomparer.Settings;
-import saad.sortcomparer.firstscreen.MainActivity;
+import saad.sortcomparer.homescreen.MainActivity;
 import saad.sortcomparer.sort.Statistics;
-import saad.sortcomparer.thirdscreen.ThirdScreen;
 
 public class ResultsActivity extends FragmentActivity {
     ViewPager mPager;

@@ -1,4 +1,4 @@
-package saad.sortcomparer.firstscreen;/*
+package saad.sortcomparer.homescreen;/*
  * Copyright 2015 serso aka se.solovyev
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ import saad.sortcomparer.BuildConfig;
 
 /**
  * {@link android.support.v7.widget.LinearLayoutManager} which wraps its content. Note that this class will always
- * wrap the content regardless of {@link android.support.v7.widget.RecyclerView} layout parameters.
+ * wrap the content regardless of {@link RecyclerView} layout parameters.
  * <p/>
  * Now it's impossible to run add/remove animations with child views which have arbitrary dimensions (height for
  * VERTICAL orientation and width for HORIZONTAL). However if child views have fixed dimensions

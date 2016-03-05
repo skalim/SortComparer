@@ -2,6 +2,7 @@ package saad.sortcomparer;
 
 import android.animation.ObjectAnimator;
 import android.os.AsyncTask;
+import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -43,7 +44,7 @@ public class Animator {
         iv.startAnimation(scaleIn);
     }
 
-    public void animateIn(RelativeLayout rl){
+    public void animateIn(View rl){
         int cx = rl.getWidth() / 2;
         int cy = rl.getHeight() / 2;
         float finalRadius = (float) Math.hypot(cx, cy);

@@ -1,24 +1,18 @@
 package test;
 
-import android.os.AsyncTask;
-
-import junit.framework.TestCase;
-import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import saad.sortcomparer.sort.Sort;
 import saad.sortcomparer.sort.SortData;
-import saad.sortcomparer.thirdscreen.ThirdScreen;
 
 /**
  * Created by Saad on 24-Jan-16.
  */
 public class SortTest {
     Sort sort;
-    ThirdScreen.SortingTask sortingTask;
     SortData sortData = new SortData(1000, false);
-
+/*
     @Test
     public void testSelectionSort() {
         //test array
@@ -73,4 +67,13 @@ public class SortTest {
         //assertTrue(sort.getData().isSorted());
     }
 
+    @Test
+    public void testQuickSort(){
+        sort = new Sort(40, false);
+        sort.getData().print();
+        sort.quickSort();
+        sort.getData().print();
+        assertTrue(sort.getData().isSorted());
+    }
+*/
 }

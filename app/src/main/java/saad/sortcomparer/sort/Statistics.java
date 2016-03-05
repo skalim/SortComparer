@@ -2,8 +2,6 @@ package saad.sortcomparer.sort;
 
 import java.io.Serializable;
 
-import saad.sortcomparer.Settings;
-
 /**
  * Created by Saad on 26-Jan-16.
  * time - time to sort in ns
