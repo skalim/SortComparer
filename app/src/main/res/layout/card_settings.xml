@@ -4,180 +4,179 @@
     android:layout_height="match_parent">
 
     <android.support.v4.widget.NestedScrollView
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:background="@color/colorBackgroundMaterialDark"
-        >
-    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="@dimen/padding_top_with_header"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        >
-
-        <TextView
-            android:id="@+id/choose_datastructure_message"
-            style="@style/messages_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/choose_datastructure" />
-
-        <LinearLayout
-            android:id="@+id/cards"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/choose_datastructure_message"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
-
-                android:id="@+id/array_card"
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-
-                android:layout_weight="1"
-                android:clickable="true"
-
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                card_view:cardBackgroundColor="@color/card_view_background">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/check_circle_array"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:src="@drawable/ic_check_circle_white"
-                        android:tint="@color/colorAccent"
-                        android:visibility="invisible" />
-
-                    <ImageView
-                        android:id="@+id/ic_array"
-
-                        style="@style/ic_data"
-                        android:clickable="false"
-                        android:src="@drawable/ic_format_list_numbered_white" />
-
-                    <TextView
-                        style="@style/name_data"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/ic_array"
-                        android:text="Array" />
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
-
-                android:id="@+id/list_card"
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-
-                android:layout_weight="1"
-                android:clickable="true"
-
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                card_view:cardBackgroundColor="@color/card_view_background">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/check_circle_list"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:src="@drawable/ic_check_circle_white"
-                        android:tint="@color/colorAccent"
-                        android:visibility="invisible" />
-
-                    <ImageView
-                        android:id="@+id/ic_list"
-                        style="@style/ic_data"
-                        android:clickable="false"
-                        android:src="@drawable/ic_linked_list_white" />
-
-                    <TextView
-                        style="@style/name_data"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/ic_list"
-                        android:text="List" />
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/choose_data_size_message"
-            style="@style/messages_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/cards"
-            android:text="@string/choose_data_size" />
-
+        android:background="@color/colorBackgroundMaterialDark">
 
         <RelativeLayout
-            android:id="@+id/range"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/choose_data_size_message">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/padding_top_with_header">
 
             <TextView
+                android:id="@+id/choose_datastructure_message"
+                style="@style/messages_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="@string/data_range_min" />
+                android:text="@string/choose_datastructure" />
+
+            <LinearLayout
+                android:id="@+id/cards"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/choose_datastructure_message"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+                    android:id="@+id/array_card"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+
+                    android:layout_weight="1"
+                    android:clickable="true"
+
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    card_view:cardBackgroundColor="@color/card_view_background">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/check_circle_array"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:src="@drawable/ic_check_circle_white"
+                            android:tint="@color/colorAccent"
+                            android:visibility="invisible" />
+
+                        <ImageView
+                            android:id="@+id/ic_array"
+
+                            style="@style/ic_data"
+                            android:clickable="false"
+                            android:src="@drawable/ic_format_list_numbered_white" />
+
+                        <TextView
+                            style="@style/name_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ic_array"
+                            android:text="Array" />
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+                    android:id="@+id/list_card"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+
+                    android:layout_weight="1"
+                    android:clickable="true"
+
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    card_view:cardBackgroundColor="@color/card_view_background">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/check_circle_list"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:src="@drawable/ic_check_circle_white"
+                            android:tint="@color/colorAccent"
+                            android:visibility="invisible" />
+
+                        <ImageView
+                            android:id="@+id/ic_list"
+                            style="@style/ic_data"
+                            android:clickable="false"
+                            android:src="@drawable/ic_linked_list_white" />
+
+                        <TextView
+                            style="@style/name_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ic_list"
+                            android:text="List" />
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
 
             <TextView
+                android:id="@+id/choose_data_size_message"
+                style="@style/messages_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="@string/data_range_max" />
+                android:layout_below="@id/cards"
+                android:text="@string/choose_data_size" />
+
+
+            <RelativeLayout
+                android:id="@+id/range"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/choose_data_size_message">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/data_range_min" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/data_range_max" />
+
+            </RelativeLayout>
+
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/range"
+                android:layout_centerHorizontal="true" />
+
+
+            <EditText
+                android:id="@+id/size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/seekBar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:inputType="number"
+                android:text="1" />
 
         </RelativeLayout>
-
-
-        <SeekBar
-            android:id="@+id/seekBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/range"
-            android:layout_centerHorizontal="true" />
-
-
-        <EditText
-            android:id="@+id/size"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/seekBar"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:inputType="number"
-            android:text="1" />
-
-    </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
 
     <TextView
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="@dimen/card_header_height"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:gravity="center_vertical"
         android:background="@color/colorAccentDark"
-        android:textColor="#FFF"/>
+        android:gravity="center_vertical"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
+        android:textColor="#FFF" />
 </merge>

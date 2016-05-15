@@ -1,10 +1,8 @@
-package saad.sortcomparer.resultsscreen;
+package saad.sortcomparer.resultsscreen.old;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.ListFragment;
 
 /**
  * Created by Saad on 06-Feb-16.

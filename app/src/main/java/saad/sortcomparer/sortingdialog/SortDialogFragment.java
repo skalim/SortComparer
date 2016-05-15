@@ -16,10 +16,11 @@ import android.widget.TextView;
 import saad.sortcomparer.Animator;
 import saad.sortcomparer.R;
 import saad.sortcomparer.Settings;
+import saad.sortcomparer.resultsscreen.GraphsActivity;
 import saad.sortcomparer.sort.Sort;
 import saad.sortcomparer.sort.SortData;
 import saad.sortcomparer.sort.Statistics;
-import saad.sortcomparer.resultsscreen.ResultsActivity;
+import saad.sortcomparer.resultsscreen.old.ResultsActivity;
 
 
 /**
@@ -176,7 +177,7 @@ public class SortDialogFragment extends DialogFragment implements View.OnClickLi
     }
 
     public void onClickSeeResults(){
-        Intent intent = new Intent(getActivity(), ResultsActivity.class);
+        Intent intent = new Intent(getActivity(), GraphsActivity.class);
         intent.putExtra("Statistics", statistics);
         startActivity(intent);
         getDialog().dismiss();

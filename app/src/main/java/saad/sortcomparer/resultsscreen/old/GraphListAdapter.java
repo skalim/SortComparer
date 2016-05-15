@@ -1,4 +1,4 @@
-package saad.sortcomparer.resultsscreen;
+package saad.sortcomparer.resultsscreen.old;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

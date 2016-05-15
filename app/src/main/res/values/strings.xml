@@ -51,5 +51,6 @@
 
     <string name="error_no_algorithms_selected">No algorithms selected</string>
     <string name="error_no_datastructure_selected">No data structure selected</string>
+    <string name="title_activity_graphs">GraphsActivity</string>
 
 </resources>

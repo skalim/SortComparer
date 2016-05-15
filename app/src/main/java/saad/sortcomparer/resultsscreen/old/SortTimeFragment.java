@@ -1,4 +1,4 @@
-package saad.sortcomparer.resultsscreen;
+package saad.sortcomparer.resultsscreen.old;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

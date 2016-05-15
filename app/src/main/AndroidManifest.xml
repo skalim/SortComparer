@@ -7,23 +7,24 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".homescreen.MainActivity"
-            android:label="@string/app_name"
+            android:label="@string/app_name">
 
-            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-
         <activity
-            android:name=".resultsscreen.ResultsActivity"
+            android:name=".resultsscreen.old.ResultsActivity"
             android:label="@string/title_activity_results_new" />
-
+        <activity
+            android:name=".resultsscreen.GraphsActivity"
+            android:label="@string/title_activity_graphs"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

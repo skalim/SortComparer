@@ -1,4 +1,4 @@
-package saad.sortcomparer.resultsscreen;
+package saad.sortcomparer.resultsscreen.old;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,26 +10,28 @@ import android.view.ViewGroup;
 import saad.sortcomparer.R;
 import saad.sortcomparer.homescreen.LinearLayoutManager;
 
-public class SortSwapsFragment extends Fragment {
+public class SortComparesFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private GraphListAdapter mAdapter;
     private LinearLayoutManager mLayoutManager;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_sort_swaps, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_sort_compares, container, false);
 
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.swaps_graph_recycler_view);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.compares_graph_recycler_view);
         mRecyclerView.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager( getActivity() );
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new GraphListAdapter(((ResultsActivity) getActivity()).getStatistics(), "swaps");
+        mAdapter = new GraphListAdapter(((ResultsActivity) getActivity()).getStatistics(), "compares");
         mRecyclerView.setAdapter(mAdapter);
 
         return rootView;
     }
+
 }
